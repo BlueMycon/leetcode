@@ -20,7 +20,7 @@ const groupAnagrams = function(strs) {
             alphabetCount[index]++;
         }
 
-        const key = alphabetCount.toString();
+        const key = alphabetCount.join('|');
         console.log('str', str, 'aCount', alphabetCount, 'key', key);
         strMap.set(key, [...(strMap.get(key) ?? []), str]);
     }
