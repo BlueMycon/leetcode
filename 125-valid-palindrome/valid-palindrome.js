@@ -23,13 +23,17 @@ const isPalindrome = function(s) {
 };
 
 function isAlphanumeric(char) {
-    const charCode = char.charCodeAt(0);
-    
     return (
-        (charCode >= 65 && charCode <= 90) || // Uppercase Latin Letters (A-Z)
-        (charCode >= 97 && charCode <= 122) || // Lowercase Latin Letters (a-z)
-        (charCode >= 48 && charCode <= 57) // Digits (0-9)
+        (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z') || 
+        (char >= '0' && char <= '9')
     );
+    
+    // alternatively let charCode = char.charCodeAt(0) and use those codes
+    // return (
+    //     (charCode >= 65 && charCode <= 90) || // Uppercase Latin Letters (A-Z)
+    //     (charCode >= 97 && charCode <= 122) || // Lowercase Latin Letters (a-z)
+    //     (charCode >= 48 && charCode <= 57) // Digits (0-9)
+    // );
 }
 
 
