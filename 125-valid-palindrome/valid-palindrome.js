@@ -6,30 +6,30 @@
  * Two pointers; only O(1) extra memory
  */
 const isPalindrome = function(s) {
-    if (s.trim() === "") return true;
-
-    s = s.toLowerCase().trim();
     let left = 0;
     let right = s.length - 1;
 
     while(left < right) {
-        if (!isAlphanumeric(s[left])) {
-            left++;
-        } else if (!isAlphanumeric(s[right])) {
-            right--;
-        } else if (s[left] !== s[right]) {
-            return false;
-        } else {
-            left++;
-            right--;
-        }
+        if (!isAlphanumeric(s[left])) {left++; continue;}
+        if (!isAlphanumeric(s[right])) {right--; continue;}
+
+        if (s[left].toLowerCase() !== s[right].toLowerCase()) return false;
+
+        left++;
+        right--;
     }
 
     return true;
 };
 
 function isAlphanumeric(char) {
-    return /[a-z0-9]/.test(char);
+    const charCode = char.charCodeAt(0);
+    
+    return (
+        (charCode >= 65 && charCode <= 90) || // Uppercase Latin Letters (A-Z)
+        (charCode >= 97 && charCode <= 122) || // Lowercase Latin Letters (a-z)
+        (charCode >= 48 && charCode <= 57) // Digits (0-9)
+    );
 }
 
 
